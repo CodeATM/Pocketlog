@@ -31,10 +31,28 @@ yarn-error.*
 *.pem
 
 # local env files
-.env*.local
+# The app has no server and ships no secrets, but a developer's `.env` still must
+# never reach the repo. `.env.example` stays tracked so the variables stay documented.
+.env
+.env.*
+!.env.example
+
+# local SQLite databases
+# The real database lives in the app's sandbox and is never in the working tree, but
+# an exported or hand-inspected copy is somebody's activity log and stays local.
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
 
 # typescript
 *.tsbuildinfo
+
+# editor / OS noise
+.vscode/
+.idea/
 
 # generated native folders
 /ios
